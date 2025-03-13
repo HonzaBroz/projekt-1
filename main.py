@@ -1,3 +1,11 @@
+"""
+projekt_1.py: první projekt do Engeto Online Python Akademie
+
+author: Jan Brož
+email: jan.bro@exekutorsky-urad.cz
+"""
+
+
 TEXTS = [
     '''Situated about 10 miles west of Kemmerer,
     Fossil Butte is a ruggedly impressive
@@ -113,7 +121,7 @@ if p_jmeno in uzivatele and uzivatele.setdefault(p_jmeno) == heslo:
             elif len(delka) == 11:
                 delk_slova11 = delk_slova11 + 1
   
-        #teď si vypíšu ten graf
+        
         print("Délka|", "Četnost".center(18), "| Počet")
         print(oddělovač)
         print("   1 |", ("*" * int(delk_slova1)).ljust(18), "|", delk_slova1)
