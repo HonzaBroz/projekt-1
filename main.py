@@ -2,7 +2,7 @@
 projekt_1.py: první projekt do Engeto Online Python Akademie
 
 author: Jan Brož
-email: jan.bro@exekutorsky-urad.cz
+email: jan.broz@exekutorsky-urad.cz
 """
 
 
