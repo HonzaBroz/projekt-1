@@ -34,7 +34,7 @@ TEXTS = [
     garpike and stingray are also present.'''
 ]
 
-
+import string
 
 uzivatele =  {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pass123"}
 oddělovač = 40 * "-"
@@ -44,7 +44,7 @@ heslo = input ("Heslo: ")
 
 print(oddělovač)
 
-if p_jmeno in uzivatele and uzivatele.setdefault(p_jmeno) == heslo:
+if p_jmeno in uzivatele and uzivatele.get(p_jmeno) == heslo:
     print("Vitej užitateli: ", p_jmeno,"\n"
           "Máme pro tebe tři texty k analyzování","\n",
           oddělovač)
@@ -52,7 +52,7 @@ if p_jmeno in uzivatele and uzivatele.setdefault(p_jmeno) == heslo:
     print (oddělovač)
     if vyber_text in ("1", "2", "3"):
 
-        rozdelení_slovniku = TEXTS[int(vyber_text) - 1].replace(".", " ").replace(",", " ").split()
+        rozdelení_slovniku = TEXTS[int(vyber_text) - 1].translate(str.maketrans(" ", " ", string.punctuation)).split()
 
         počet_slov = 0
         početslov_s_velkm_prvnim_pismenem = 0
@@ -60,31 +60,6 @@ if p_jmeno in uzivatele and uzivatele.setdefault(p_jmeno) == heslo:
         počet_čísel = 0
         počet_slov_psanych_velkými_pismeny = 0
         soucet_cisel2 = 0
-
-        for velka in rozdelení_slovniku:
-            počet_slov = počet_slov + 1
-            if velka.istitle():
-                početslov_s_velkm_prvnim_pismenem = početslov_s_velkm_prvnim_pismenem + 1
-            elif velka.isnumeric():
-                počet_čísel = počet_čísel +1
-                soucet_cisel2 = soucet_cisel2 + int(velka)
-            elif velka.islower():
-                počet_slov_s_malym_pismene = počet_slov_s_malym_pismene +1
-            elif velka.isupper():
-                počet_slov_psanych_velkými_pismeny = počet_slov_psanych_velkými_pismeny + 1
-
-        
-        print("Počet slov je:", počet_slov)
-        print("Počet slov s prvním velkým pismenem je:", početslov_s_velkm_prvnim_pismenem)
-        print("Počet slov psaných velkými písmeny je:", počet_slov_psanych_velkými_pismeny)
-        print("Počet slov psaných malými písmeny je:", počet_slov_s_malym_pismene)
-        print("Počet čísel je:", počet_čísel)
-        print("Součet všech čísel je:", soucet_cisel2)
-        print(oddělovač)
-        
-        
-        
-
         delk_slova1 = 0
         delk_slova2 = 0
         delk_slova3 = 0
@@ -97,52 +72,136 @@ if p_jmeno in uzivatele and uzivatele.setdefault(p_jmeno) == heslo:
         delk_slova10 = 0
         delk_slova11 = 0
 
-        for delka in rozdelení_slovniku:
-            if len(delka) == 1:
-                delk_slova1 = delk_slova1 + 1
-            elif len(delka) == 2:
-                delk_slova2 = delk_slova2 + 1
-            elif len(delka) == 3:
-                delk_slova3 = delk_slova3 + 1
-            elif len(delka) == 4:
-                delk_slova4 = delk_slova4 + 1
-            elif len(delka) == 5:
-                delk_slova5 = delk_slova5 + 1
-            elif len(delka) == 6:
-                delk_slova6 = delk_slova6 + 1
-            elif len(delka) == 7:
-                delk_slova7 = delk_slova7 + 1
-            elif len(delka) == 8:
-                delk_slova8 = delk_slova8 + 1
-            elif len(delka) == 9:
-                delk_slova9 = delk_slova9 + 1
-            elif len(delka) == 10:
-                delk_slova10 = delk_slova10 + 1
-            elif len(delka) == 11:
-                delk_slova11 = delk_slova11 + 1
-  
+        for velka in rozdelení_slovniku:
+            počet_slov = počet_slov + 1
+            if velka.istitle():
+                početslov_s_velkm_prvnim_pismenem = početslov_s_velkm_prvnim_pismenem + 1
+                if len(velka) == 1:
+                    delk_slova1 = delk_slova1 + 1
+                elif len(velka) == 2:
+                    delk_slova2 = delk_slova2 + 1
+                elif len(velka) == 3:
+                    delk_slova3 = delk_slova3 + 1
+                elif len(velka) == 4:
+                    delk_slova4 = delk_slova4 + 1
+                elif len(velka) == 5:
+                    delk_slova5 = delk_slova5 + 1
+                elif len(velka) == 6:
+                    delk_slova6 = delk_slova6 + 1
+                elif len(velka) == 7:
+                    delk_slova7 = delk_slova7 + 1
+                elif len(velka) == 8:
+                    delk_slova8 = delk_slova8 + 1
+                elif len(velka) == 9:
+                    delk_slova9 = delk_slova9 + 1
+                elif len(velka) == 10:
+                    delk_slova10 = delk_slova10 + 1
+                elif len(velka) == 11:
+                    delk_slova11 = delk_slova11 + 1
+            elif velka.isnumeric():
+                počet_čísel = počet_čísel +1
+                soucet_cisel2 = soucet_cisel2 + int(velka)
+                if len(velka) == 1:
+                    delk_slova1 = delk_slova1 + 1
+                elif len(velka) == 2:
+                    delk_slova2 = delk_slova2 + 1
+                elif len(velka) == 3:
+                    delk_slova3 = delk_slova3 + 1
+                elif len(velka) == 4:
+                    delk_slova4 = delk_slova4 + 1
+                elif len(velka) == 5:
+                    delk_slova5 = delk_slova5 + 1
+                elif len(velka) == 6:
+                    delk_slova6 = delk_slova6 + 1
+                elif len(velka) == 7:
+                    delk_slova7 = delk_slova7 + 1
+                elif len(velka) == 8:
+                    delk_slova8 = delk_slova8 + 1
+                elif len(velka) == 9:
+                    delk_slova9 = delk_slova9 + 1
+                elif len(velka) == 10:
+                    delk_slova10 = delk_slova10 + 1
+                elif len(velka) == 11:
+                    delk_slova11 = delk_slova11 + 1
+            elif velka.islower():
+                počet_slov_s_malym_pismene = počet_slov_s_malym_pismene +1
+                if len(velka) == 1:
+                    delk_slova1 = delk_slova1 + 1
+                elif len(velka) == 2:
+                    delk_slova2 = delk_slova2 + 1
+                elif len(velka) == 3:
+                    delk_slova3 = delk_slova3 + 1
+                elif len(velka) == 4:
+                    delk_slova4 = delk_slova4 + 1
+                elif len(velka) == 5:
+                    delk_slova5 = delk_slova5 + 1
+                elif len(velka) == 6:
+                    delk_slova6 = delk_slova6 + 1
+                elif len(velka) == 7:
+                    delk_slova7 = delk_slova7 + 1
+                elif len(velka) == 8:
+                    delk_slova8 = delk_slova8 + 1
+                elif len(velka) == 9:
+                    delk_slova9 = delk_slova9 + 1
+                elif len(velka) == 10:
+                    delk_slova10 = delk_slova10 + 1
+                elif len(velka) == 11:
+                    delk_slova11 = delk_slova11 + 1
+            elif velka.isupper():
+                počet_slov_psanych_velkými_pismeny = počet_slov_psanych_velkými_pismeny + 1
+                if len(velka) == 1:
+                    delk_slova1 = delk_slova1 + 1
+                elif len(velka) == 2:
+                    delk_slova2 = delk_slova2 + 1
+                elif len(velka) == 3:
+                    delk_slova3 = delk_slova3 + 1
+                elif len(velka) == 4:
+                    delk_slova4 = delk_slova4 + 1
+                elif len(velka) == 5:
+                    delk_slova5 = delk_slova5 + 1
+                elif len(velka) == 6:
+                    delk_slova6 = delk_slova6 + 1
+                elif len(velka) == 7:
+                    delk_slova7 = delk_slova7 + 1
+                elif len(velka) == 8:
+                    delk_slova8 = delk_slova8 + 1
+                elif len(velka) == 9:
+                    delk_slova9 = delk_slova9 + 1
+                elif len(velka) == 10:
+                    delk_slova10 = delk_slova10 + 1
+                elif len(velka) == 11:
+                    delk_slova11 = delk_slova11 + 1
+
+        nejdelší = max(delk_slova1, delk_slova2, delk_slova3, delk_slova4, delk_slova5, delk_slova6, 
+            delk_slova7, delk_slova8, delk_slova9, delk_slova10, delk_slova11)
         
-        print("Délka|", "Četnost".center(18), "| Počet")
+        print("Počet slov je:", počet_slov)
+        print("Počet slov s prvním velkým pismenem je:", početslov_s_velkm_prvnim_pismenem)
+        print("Počet slov psaných velkými písmeny je:", počet_slov_psanych_velkými_pismeny)
+        print("Počet slov psaných malými písmeny je:", počet_slov_s_malym_pismene)
+        print("Počet čísel je:", počet_čísel)
+        print("Součet všech čísel je:", soucet_cisel2)
         print(oddělovač)
-        print("   1 |", ("*" * int(delk_slova1)).ljust(18), "|", delk_slova1)
-        print("   2 |", ("*" * int(delk_slova2)).ljust(18), "|", delk_slova2)
-        print("   3 |", ("*" * int(delk_slova3)).ljust(18), "|", delk_slova3)
-        print("   4 |", ("*" * int(delk_slova4)).ljust(18), "|", delk_slova4)
-        print("   5 |", ("*" * int(delk_slova5)).ljust(18), "|", delk_slova5)
-        print("   6 |", ("*" * int(delk_slova6)).ljust(18), "|", delk_slova6)
-        print("   7 |", ("*" * int(delk_slova7)).ljust(18), "|", delk_slova7)
-        print("   8 |", ("*" * int(delk_slova8)).ljust(18), "|", delk_slova8)
-        print("   9 |", ("*" * int(delk_slova9)).ljust(18), "|", delk_slova9)
-        print("   10|", ("*" * int(delk_slova10)).ljust(18), "|", delk_slova10)
-        print("   11|", ("*" * int(delk_slova11)).ljust(18), "|", delk_slova11)
+  
+        print("Délka|", "Četnost".center(nejdelší + 7), "| Počet")
+        print(oddělovač)
+        print("   1 |", ("*" * int(delk_slova1)).ljust(nejdelší + 7), "|", delk_slova1)
+        print("   2 |", ("*" * int(delk_slova2)).ljust(nejdelší + 7), "|", delk_slova2)
+        print("   3 |", ("*" * int(delk_slova3)).ljust(nejdelší + 7), "|", delk_slova3)
+        print("   4 |", ("*" * int(delk_slova4)).ljust(nejdelší + 7), "|", delk_slova4)
+        print("   5 |", ("*" * int(delk_slova5)).ljust(nejdelší + 7), "|", delk_slova5)
+        print("   6 |", ("*" * int(delk_slova6)).ljust(nejdelší + 7), "|", delk_slova6)
+        print("   7 |", ("*" * int(delk_slova7)).ljust(nejdelší + 7), "|", delk_slova7)
+        print("   8 |", ("*" * int(delk_slova8)).ljust(nejdelší + 7), "|", delk_slova8)
+        print("   9 |", ("*" * int(delk_slova9)).ljust(nejdelší + 7), "|", delk_slova9)
+        print("   10|", ("*" * int(delk_slova10)).ljust(nejdelší + 7), "|", delk_slova10)
+        print("   11|", ("*" * int(delk_slova11)).ljust(nejdelší + 7), "|", delk_slova11)
 
     elif vyber_text not in ("1", "2", "3") and vyber_text.isnumeric():
         print ("Nezadal jste možnost z výběru, ukončuji program")
     else: 
         print ("Nezadal jste číslo, ukončuji program")
         
-
 else:
     print("Uživatel není registrovany, ukončuji program")
-    
     
